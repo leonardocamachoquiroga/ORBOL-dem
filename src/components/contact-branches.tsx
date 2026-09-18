@@ -1,0 +1,10 @@
+import { Clock3, Mail, MapPin, Phone } from "lucide-react";
+
+const branches = [
+  { city: "La Paz", address: "Av. Arce 2450 · Zona Sopocachi", hours: "Lun–Sáb · 09:00–19:00", phone: "+591 700 000 00", mapUrl: "https://www.openstreetmap.org/?mlat=-16.495&mlon=-68.12#map=14/-16.495/-68.12" },
+  { city: "Santa Cruz", address: "Av. San Martín 410 · Equipetrol", hours: "Lun–Sáb · 09:00–19:00", phone: "+591 700 000 01", mapUrl: "https://www.openstreetmap.org/search?query=Equipetrol%20Santa%20Cruz%20Bolivia" },
+];
+
+export function ContactBranches() {
+  return <section className="section contact-section"><div className="shell"><div className="section-heading"><div><span className="eyebrow">ESTAMOS CERCA</span><h2>Ven a sentirlo en persona.</h2></div><p>Horarios y ubicaciones conceptuales para esta demo. En producción se reemplazan por la red real de OLBOL.</p></div><div className="contact-layout"><div className="branch-list">{branches.map((branch) => <article className="branch-card" key={branch.city}><div className="branch-card__top"><span className="eyebrow">SUCURSAL OLBOL</span><strong>{branch.city}</strong></div><p><MapPin size={15} /> {branch.address}</p><p><Clock3 size={15} /> {branch.hours}</p><p><Phone size={15} /> {branch.phone}</p><a className="branch-card__link" href={branch.mapUrl} target="_blank" rel="noreferrer">Cómo llegar <span>↗</span></a></article>)}<div className="contact-direct"><span className="eyebrow">CONTACTO DIRECTO</span><a href="mailto:hola@olbol.demo"><Mail size={15} /> hola@olbol.demo</a><a href="tel:+59170000000"><Phone size={15} /> +591 700 000 00</a></div></div><div className="map-card"><iframe title="Mapa conceptual de sucursales OLBOL" src="https://www.openstreetmap.org/export/embed.html?bbox=-68.145%2C-16.515%2C-68.095%2C-16.475&amp;layer=mapnik" loading="lazy" /><div className="map-card__caption"><MapPin size={15} /><span>Mapa conceptual · La Paz</span><a href="https://www.openstreetmap.org/?mlat=-16.495&amp;mlon=-68.12#map=14/-16.495/-68.12" target="_blank" rel="noreferrer">Abrir mapa ↗</a></div></div></div></div></section>;
+}
