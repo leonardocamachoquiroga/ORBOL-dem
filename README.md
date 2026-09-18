@@ -27,7 +27,7 @@ Abrir `http://localhost:3000`.
 4. Revisar la recomendación y pedir una comparación.
 5. Responder “Me interesa” para mostrar el siguiente paso comercial.
 
-La demo funciona sin variables de entorno gracias al asesor determinista local. Para probar un endpoint compatible con chat, copiar `.env.example` a `.env.local` y completar `LLM_API_URL`, `LLM_API_KEY` y `LLM_MODEL`.
+La demo funciona sin variables de entorno gracias al asesor determinista local. Para activar OpenAI, copiar `.env.example` a `.env.local`, conservar `LLM_API_URL=https://api.openai.com/v1/chat/completions`, colocar la API key únicamente en `LLM_API_KEY` y usar `LLM_MODEL=gpt-4.1-mini`. `.env.local` está excluido de Git y nunca debe publicarse.
 
 ## Datos e integraciones
 
