@@ -4,7 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { FloatingWhatsApp } from "@/components/floating-whatsapp";
 
 export const metadata: Metadata = {
-  title: "OLBOL — Eléctrico sin compromisos",
+  title: "OLBOL — Muévete hacia algo mejor",
   description: "OLBOL Digital Sales Experience — una nueva forma de elegir tu vehículo eléctrico.",
 };
 
