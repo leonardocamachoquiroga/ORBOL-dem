@@ -1,0 +1,226 @@
+[
+  {
+    "name": "inicio",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "catalogo",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "vehiculo",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "asesor",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "comparar",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "propuesta",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "crm",
+    "width": 1440,
+    "errors": [],
+    "overflow": false,
+    "brokenImages": [],
+    "emptyVehicleImages": 0
+  },
+  {
+    "name": "inicio",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "catalogo",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "vehiculo",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "asesor",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "comparar",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "propuesta",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "crm",
+    "width": 390,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "inicio",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "catalogo",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "vehiculo",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "asesor",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "comparar",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "propuesta",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "crm",
+    "width": 768,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "inicio",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "catalogo",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "vehiculo",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "asesor",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "comparar",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "propuesta",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  },
+  {
+    "name": "crm",
+    "width": 1024,
+    "overflow": false,
+    "overflowElements": [],
+    "galleryOverlap": false,
+    "stretchedGalleryBadge": false
+  }
+]

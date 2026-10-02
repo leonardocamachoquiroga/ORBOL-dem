@@ -1,0 +1,21 @@
+{
+  "checks": [
+    "Filtros y recuperación de catálogo vacío",
+    "Galería ampliable",
+    "Cierre por Escape y restauración de foco",
+    "Prueba de manejo simulada",
+    "Recomendación y fallback sin red",
+    "Comparación cambia a cotización",
+    "Validación de cotización",
+    "Resumen WhatsApp conserva el contexto",
+    "Cotización persiste al recargar",
+    "Interés web → CRM → asignación, etapa y nota",
+    "Seguimiento CRM persiste al recargar",
+    "Presupuesto se ajusta al tamaño del equipo",
+    "Comparador seleccionable",
+    "Menú móvil accesible",
+    "WhatsApp demo y menú móvil",
+    "Sin errores de ejecución en navegador"
+  ],
+  "errors": []
+}
