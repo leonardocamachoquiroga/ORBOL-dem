@@ -1,7 +1,11 @@
+param(
+  [string]$DocumentPath,
+  [string]$OutputDirectory
+)
 $ErrorActionPreference = 'Stop'
 $taskRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path
-$docPath = Join-Path $taskRoot 'docs\OLBOL propuesta y guion de demo.docx'
-$qaPath = Join-Path $taskRoot 'docs\qa-documento'
+$docPath = if ($DocumentPath) { (Resolve-Path -LiteralPath $DocumentPath).Path } else { Join-Path $taskRoot 'docs\OLBOL WhatsApp IA y Yaku.docx' }
+$qaPath = if ($OutputDirectory) { [System.IO.Path]::GetFullPath($OutputDirectory) } else { Join-Path $taskRoot 'docs\qa-whatsapp' }
 New-Item -ItemType Directory -Force -Path $qaPath | Out-Null
 $pdfPath = Join-Path $qaPath 'OLBOL revision.pdf'
 $wordInstance = New-Object -ComObject Word.Application

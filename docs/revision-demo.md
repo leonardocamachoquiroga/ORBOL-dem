@@ -8,16 +8,20 @@ Se corrigieron imágenes de tarjetas sin altura, contrastes, solapamientos, esta
 
 ## Evidencia de verificación
 
-- `pnpm test`: siete pruebas aprobadas en tres archivos.
+- `pnpm test`: diez pruebas aprobadas en cuatro archivos, incluidas tarifas de proveedores y subtotales sin CRM.
 - `pnpm lint`: sin advertencias ni errores.
 - `pnpm build`: compilación de producción completada y diecisiete páginas generadas.
-- `scripts/verify-demo.cjs`: dieciséis comprobaciones aprobadas; incluye comparación a cotización, resumen de WhatsApp, interés a CRM, edición y persistencia, modales y navegación móvil. Resultado en `verificacion-funcional.json`.
+- `scripts/verify-demo.cjs`: diecinueve comprobaciones aprobadas; incluye comparación a cotización, resumen de WhatsApp, interés a CRM, edición y persistencia, modales y navegación móvil. Resultado en `verificacion-funcional.json`.
 - `scripts/capture-demo.cjs`: veintiocho casos, siete rutas a 390, 768, 1024 y 1440 píxeles. Sin desbordamiento horizontal; en las capturas de escritorio no hubo imágenes rotas ni errores de ejecución. Resultado en `capturas/revision.json`.
 - Capturas comerciales tomadas de la compilación de producción. La recomendación funciona con el asesor local cuando la API externa no responde.
-- Documento Word de catorce páginas exportado con Word, renderizado a PNG y revisado visualmente, incluidas capturas, tablas y enlaces de fuentes.
+- Documento vigente de seis páginas sobre WhatsApp IA y Yaku, exportado con Word, renderizado a PNG y revisado visualmente en todas sus páginas. Contiene capturas, requisitos por proveedor, escenarios de costo, fuentes y speech. La propuesta anterior de catorce páginas se conserva como antecedente y sus costos han sido sustituidos.
 
 ## Límites concretos de la entrega
 
-Los datos son ficticios. No se enviaron mensajes, no se activaron anuncios y no se conectaron cuentas reales de Meta o Kommo. Los registros comerciales se guardan en el navegador. La integración, las plantillas, los permisos y la aceptación del número quedan dentro del piloto propuesto. La calidad del proveedor externo de IA requiere validación con el catálogo oficial.
+Los datos son ficticios. No se enviaron mensajes, no se activaron anuncios y no se conectaron cuentas reales de Meta, Yaku, Twilio o 360dialog. Los registros comerciales se guardan en el navegador. La integración, las plantillas, los permisos y la aceptación del número quedan dentro del piloto propuesto. La calidad del proveedor externo de IA requiere validación con el catálogo oficial.
 
-Los honorarios son una propuesta interna sugerida, pues aún no están definidos. Se asumen tres usuarios. Las provisiones de hosting, IA y mensajería no son tarifas garantizadas. Se documenta la discrepancia de fuentes sobre la actualización de WhatsApp de octubre de 2026 y queda pendiente confirmar el tarifario técnico aplicable a Bolivia antes de contratar.
+Los honorarios son sugeridos y deben revalidarse después de auditar Yaku y definir el alcance. Yaku es la primera opción; un CRM básico en el DMS es la alternativa. La licencia de Yaku, usuarios y capacidades de integración siguen por definir. Las provisiones de infraestructura, IA y Meta no son tarifas garantizadas. Meta ya publica el cambio de octubre de 2026 en su FAQ; queda pendiente el valor unitario del tarifario aplicable a Bolivia. El simulador marca sus cifras como subtotales sin CRM y compara Meta directa, Twilio y 360dialog.
+
+## Actualización de la propuesta con Yaku
+
+Se retiró Kommo de la recomendación activa, la contratación mínima de seis meses y el costo ficticio por usuario. Se distinguen CRM y conexión oficial. Se verificaron controles de proveedor, volumen y opción DMS; las capturas actuales muestran la propuesta revisada. Twilio requiere validar el programa Tech Provider al operar Yaku como proveedor de software para clientes. La coexistencia y continuidad del número deben validarse antes de cualquier migración.
