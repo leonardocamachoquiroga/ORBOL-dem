@@ -660,6 +660,7 @@ main { animation: page-enter .45s ease both; }
 }
 @media (max-width: 900px) {
   .hero { min-height: auto; padding: 44px 0 56px; }
+  .detail-hero__visual { min-height: 0; height: auto; }
   .hero__grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
   .hero__copy { order: 0; }
   .hero__visual { order: 1; width: 100%; }
@@ -697,7 +698,7 @@ main { animation: page-enter .45s ease both; }
   .demo-hero__actions { gap: 12px; }
   .system-flow { flex-wrap: wrap; justify-content: center; gap: 12px; }
   .gallery-lightbox { height: 60vh; }
-  .vehicle-gallery__badge { font-size: 8px; left: 12px; bottom: 12px; }
+  .vehicle-gallery__badge { font-size: 8px; left: 12px; top: 12px; bottom: auto; }
   .floating-whatsapp { bottom: max(14px, env(safe-area-inset-bottom)); }
   .footer { padding-bottom: 85px; }
   .premium-select__menu { min-width: 100%; }

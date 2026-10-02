@@ -19,6 +19,7 @@ async function main() {
     await page.evaluate(()=>document.querySelectorAll('img').forEach(img=>img.loading='eager'));
     await page.waitForFunction(() => [...document.querySelectorAll('img')].filter(i=>i.loading!=='lazy').every(i=>i.complete), null, {timeout:90000});
     await page.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
+    await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
     await page.waitForFunction(() => [...document.querySelectorAll('img')].every(i=>i.complete), null, {timeout:90000});
     await page.screenshot({ path: path.join(folder, name + '.png'), fullPage: true });
     await page.screenshot({ path: path.join(folder, name + '-escena.png') });
@@ -34,9 +35,15 @@ async function main() {
       if(name==='asesor') await page.locator('.message').first().waitFor({timeout:60000});
       await page.evaluate(()=>document.querySelectorAll('img').forEach(img=>img.loading='eager'));
       await page.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
+      await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
       await page.waitForFunction(() => [...document.querySelectorAll('img')].every(i=>i.complete), null, {timeout:90000});
       if(width===390) await page.screenshot({path:path.join(folder,name+'-movil.png'),fullPage:true});
-      report.push({name,width,...(await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,overflowElements:[...document.querySelectorAll('main *')].filter(e=>e instanceof HTMLElement && e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>e.className)})))});
+      report.push({name,width,...(await page.evaluate(()=>{
+        const gallery=document.querySelector('.vehicle-gallery');
+        const content=document.querySelector('.detail-hero__content');
+        const badge=document.querySelector('.vehicle-gallery__badge');
+        return {overflow:document.documentElement.scrollWidth>innerWidth,overflowElements:[...document.querySelectorAll('main *')].filter(e=>e instanceof HTMLElement && e.getBoundingClientRect().right>innerWidth+1).slice(0,8).map(e=>e.className),galleryOverlap:!!(gallery&&content&&innerWidth<=900&&gallery.getBoundingClientRect().bottom>content.getBoundingClientRect().top),stretchedGalleryBadge:!!(badge&&badge.getBoundingClientRect().height>60)};
+      }))});
     }
   }
   fs.writeFileSync(path.join(folder,'revision.json'),JSON.stringify(report,null,2));
