@@ -8,7 +8,7 @@ const fs=require('node:fs');
   await page.goto('http://localhost:3000/demo',{waitUntil:'networkidle'});
   for(const width of [1440,390]){
     await page.setViewportSize({width,height:1000});
-    for(const [name,selector] of [['canales','.channel-options'],['controles','.proposal-costs__controls'],['detalle','.proposal-costs__detail']]){
+    for(const [name,selector] of [['canales','.channel-options'],['solucion','#solucion'],['condiciones','.answer-grid']]){
       await page.locator(selector).evaluate(el=>scrollTo({top:el.getBoundingClientRect().top+scrollY-110,behavior:'instant'}));
       await page.screenshot({path:`docs/qa-propuesta/${name}-${width}.png`});
     }
