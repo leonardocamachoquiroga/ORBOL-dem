@@ -5,6 +5,8 @@ import { ArrowUpRight, Check, LoaderCircle, RotateCcw, Send, Sparkles } from "lu
 import { getRuleBasedAdvisor, type AdvisorTurn } from "@/domain/advisor";
 import { getVehicleById, vehicles } from "@/domain/vehicles";
 import { useDemoStore } from "@/store/demo-store";
+import { useCRMStore } from "@/store/crm-store";
+import Link from "next/link";
 import { ComparisonTable } from "./comparison-table";
 import { VehicleVisual } from "./vehicle-visual";
 import { QuotePanel } from "./quote-panel";
@@ -41,12 +43,20 @@ export function AdvisorExperience({ initialVehicleId }: { initialVehicleId?: str
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
+    const command = [...messages].reverse().find(message => message.uiCommand)?.uiCommand;
+    if (command) {
+      setActiveCommand(command);
+      setComparisonIds(command.type === "show_comparison" ? command.vehicleIds : null);
+    }
   }, [messages, loading]);
 
   function applyTurn(turn: AdvisorTurn) {
     addAssistantMessage(turn);
     setActiveCommand(turn.uiCommand);
-    if (turn.uiCommand.type === "show_comparison") setComparisonIds(turn.uiCommand.vehicleIds);
+    setComparisonIds(turn.uiCommand.type === "show_comparison" ? turn.uiCommand.vehicleIds : null);
+    if (turn.uiCommand.type === "show_interest_summary") {
+      useCRMStore.getState().captureInterest(turn.uiCommand.vehicleId, `Interés registrado desde el asesor web. ${turn.message}`);
+    }
   }
 
   async function submit(message = input) {
@@ -92,14 +102,14 @@ export function AdvisorExperience({ initialVehicleId }: { initialVehicleId?: str
             <VehicleVisual vehicle={currentVehicle} size="hero" />
             <div className="advisor-stage__metrics"><div><strong>{currentVehicle.rangeKm}</strong><span>km de autonomía</span></div><div><strong>{currentVehicle.fastChargeMinutes}<small> min</small></strong><span>carga rápida</span></div><div><strong>{currentVehicle.passengers}</strong><span>pasajeros</span></div></div>
             {isQuote && <QuotePanel vehicleId={currentVehicle.id} />}
-            {isInterest && <div className="interest-card"><div className="interest-card__icon"><Check size={18} /></div><div><strong>Interés registrado</strong><p>En una implementación real, continuarías con financiamiento y reserva.</p></div><ArrowUpRight size={18} /></div>}
+            {isInterest && <div className="interest-card"><div className="interest-card__icon"><Check size={18} /></div><div><strong>Interés registrado</strong><p>En una implementación real, continuarías con financiamiento y reserva.</p></div><Link href="/crm" className="text-link">Ver CRM <ArrowUpRight size={16} /></Link></div>}
             {(isQuote || isInterest) && <WhatsAppCard vehicle={currentVehicle} context={context} />}
           </>}
         </div>
       </section>
       <section className="advisor-conversation" aria-label="Conversación con el asesor">
         <div className="advisor-conversation__header"><div><span className="eyebrow">OLBOL INTELLIGENCE</span><h2>Hablemos de tu próximo vehículo.</h2></div><Sparkles size={18} /></div>
-        <div className="advisor-messages" ref={scrollRef}>
+        <div className="advisor-messages" ref={scrollRef} role="log" aria-live="polite" aria-relevant="additions">
           {messages.map((message) => <div key={message.id} className={`message message--${message.role}`}><span className="message__role">{message.role === "assistant" ? "OLBOL" : "TÚ"}</span><p>{message.content}</p>{message.role === "assistant" && message.quickReplies && <div className="quick-replies">{message.quickReplies.map((reply) => <button key={reply} onClick={() => void submit(reply)} disabled={loading}>{reply}</button>)}</div>}</div>)}
           {loading && <div className="message message--assistant message--loading"><span className="message__role">OLBOL</span><p><LoaderCircle size={16} className="spin" /> Estoy ordenando las opciones…</p></div>}
         </div>

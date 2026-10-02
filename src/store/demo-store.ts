@@ -10,6 +10,7 @@ export interface ConversationMessage {
   role: "user" | "assistant";
   content: string;
   quickReplies?: string[];
+  uiCommand?: AdvisorTurn["uiCommand"];
 }
 
 interface DemoStore {
@@ -31,7 +32,7 @@ export const useDemoStore = create<DemoStore>()(
       start: () => set({ hasStarted: true }),
       addUserMessage: (content) => set((state) => ({ messages: [...state.messages, { id: crypto.randomUUID(), role: "user", content }] })),
       addAssistantMessage: (turn) => set((state) => ({
-        messages: [...state.messages, { id: crypto.randomUUID(), role: "assistant", content: turn.message, quickReplies: turn.quickReplies }],
+        messages: [...state.messages, { id: crypto.randomUUID(), role: "assistant", content: turn.message, quickReplies: turn.quickReplies, uiCommand: turn.uiCommand }],
         context: { ...state.context, ...turn.contextPatch },
         hasStarted: true,
       })),
