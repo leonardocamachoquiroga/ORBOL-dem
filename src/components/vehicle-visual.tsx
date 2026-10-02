@@ -15,5 +15,5 @@ const imageByVariant = {
 } as const;
 
 export function VehicleVisual({ vehicle, size = "card", showLabel = true, className = "" }: VehicleVisualProps) {
-  return <div className={`vehicle-visual vehicle-visual--${vehicle.visualVariant} vehicle-visual--${size} ${className}`} aria-label={`Concepto visual del ${vehicle.name}`} role="img"><Image className="vehicle-visual__image" src={imageByVariant[vehicle.visualVariant]} alt="" fill priority={size === "hero"} sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 60vw" /><div className="vehicle-visual__overlay" />{showLabel && <span className="vehicle-visual__label">Concept vehicle / OLBOL</span>}</div>;
+  return <div className={`vehicle-visual vehicle-visual--${vehicle.visualVariant} vehicle-visual--${size} ${className}`} aria-label={`Concepto visual del ${vehicle.name}`} role="img"><Image className="vehicle-visual__image" src={imageByVariant[vehicle.visualVariant]} alt="" fill unoptimized priority={size === "hero"} sizes="(max-width: 600px) 100vw, (max-width: 900px) 80vw, 60vw" /><div className="vehicle-visual__overlay" />{showLabel && <span className="vehicle-visual__label">Vehículo conceptual / OLBOL</span>}</div>;
 }

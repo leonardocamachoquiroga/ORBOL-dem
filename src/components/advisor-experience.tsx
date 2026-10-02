@@ -35,7 +35,8 @@ export function AdvisorExperience({ initialVehicleId }: { initialVehicleId?: str
   const currentVehicle = useMemo(() => getVehicleById(commandVehicleId(activeCommand) ?? initialVehicleId ?? context.recommendedVehicleId ?? "terra-s5") ?? vehicles[1], [activeCommand, context.recommendedVehicleId, initialVehicleId]);
 
   useEffect(() => {
-    if (!hasStarted && messages.length === 0) {
+    const session = useDemoStore.getState();
+    if (!session.hasStarted && session.messages.length === 0) {
       start();
       addAssistantMessage(welcomeTurn);
     }
@@ -62,6 +63,7 @@ export function AdvisorExperience({ initialVehicleId }: { initialVehicleId?: str
   async function submit(message = input) {
     const trimmed = message.trim();
     if (!trimmed || loading) return;
+    if (/^(empezar de nuevo|reiniciar)/i.test(trimmed)) { resetDemo(); return; }
     setInput("");
     addUserMessage(trimmed);
     setLoading(true);
@@ -86,7 +88,9 @@ export function AdvisorExperience({ initialVehicleId }: { initialVehicleId?: str
     reset();
     setActiveCommand({ type: "none" });
     setComparisonIds(null);
-    setTimeout(() => { start(); addAssistantMessage(welcomeTurn); }, 0);
+    setInput("");
+    start();
+    addAssistantMessage(welcomeTurn);
   }
 
   const isInterest = activeCommand.type === "show_interest_summary";
@@ -95,7 +99,7 @@ export function AdvisorExperience({ initialVehicleId }: { initialVehicleId?: str
   return (
     <div className="advisor-shell">
       <section className="advisor-stage">
-        <div className="advisor-stage__top"><span className="status-pill"><span className="status-pill__dot" /> Asesor OLBOL / En línea</span><button className="ghost-button" onClick={resetDemo}><RotateCcw size={14} /> Reiniciar demo</button></div>
+        <div className="advisor-stage__top"><span className="status-pill"><span className="status-pill__dot" /> Asesor OLBOL / En línea</span><button className="ghost-button" onClick={resetDemo} disabled={loading}><RotateCcw size={14} /> Reiniciar demo</button></div>
         <div className="advisor-stage__content">
           {comparisonIds ? <ComparisonTable vehicles={[getVehicleById(comparisonIds[0]) ?? vehicles[0], getVehicleById(comparisonIds[1]) ?? vehicles[1]]} /> : <>
             <div className="advisor-stage__copy"><span className="eyebrow">{isQuote ? "COTIZACIÓN OLBOL" : isInterest ? "TU OPCIÓN OLBOL" : activeCommand.type === "show_recommendation" ? "MI RECOMENDACIÓN" : "DISEÑADO PARA TU MOMENTO"}</span><h1>{isQuote ? `Cotiza tu ${currentVehicle.name}.` : isInterest ? `Tu ${currentVehicle.name} empieza aquí.` : currentVehicle.name}</h1><p>{isQuote ? "Ajusta la inicial y el plazo. El catálogo calcula una cuota orientativa en segundos." : isInterest ? "Hemos guardado tu interés en esta demo. El siguiente paso sería revisar configuración y disponibilidad." : currentVehicle.tagline}</p></div>

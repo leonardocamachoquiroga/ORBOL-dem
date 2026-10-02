@@ -600,6 +600,8 @@ main { animation: page-enter .45s ease both; }
 .section--dark .eyebrow, .feature-vehicle .eyebrow { color: #adb6a4; }
 .section--dark .vehicle-card .eyebrow { color: #606958; }
 .section--dark .vehicle-card .text-link { color: var(--ink); }
+.feature-vehicle__link { color: #4e7224; }
+.section--dark .feature-vehicle__link, .feature-vehicle .feature-vehicle__link, .demo-section--dark .feature-vehicle__link { color: var(--accent); }
 .advisor-preview__card, .testimonial-card, .branch-card, .contact-direct, .map-card, .roadmap-card, .answer-card, .demo-hero__signal { border-radius: 10px; }
 .page-intro h1, .detail-hero__content h1, .demo-hero h1 { line-height: 1.02; letter-spacing: -.065em; }
 .catalog-results .catalog-grid { padding-bottom: 0; }

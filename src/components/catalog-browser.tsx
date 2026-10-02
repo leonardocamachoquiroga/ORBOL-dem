@@ -92,7 +92,7 @@ export function CatalogBrowser({ initialFilters = {} }: { initialFilters?: Initi
         </div>
         <label className="catalog-search">
           <Search size={15} />
-          <input value={term} onChange={(event) => setTerm(event.target.value)} placeholder="Buscar modelo…" />
+          <input value={term} onChange={(event) => setTerm(event.target.value)} placeholder="Buscar modelo…" aria-label="Buscar modelo" />
         </label>
         <div className="filter-group">
           <span>Carrocería</span>
