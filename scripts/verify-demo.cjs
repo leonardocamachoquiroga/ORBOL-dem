@@ -61,8 +61,15 @@ async function main() {
   check('Seguimiento CRM persiste al recargar',(await lead.innerText()).includes('Sofía'));
   await goto('/demo');
   const initial=await page.locator('.cost-total strong').innerText();
-  await page.locator('#sellers').fill('5');
-  check('Presupuesto se ajusta al tamaño del equipo',initial!==await page.locator('.cost-total strong').innerText());
+  await page.locator('#whatsapp-provider').selectOption('twilio');
+  check('Proveedor Twilio agrega cargo por mensaje',initial!==await page.locator('.cost-total strong').innerText());
+  const twilioCost=await page.locator('.cost-total strong').innerText();
+  await page.locator('#monthly-messages').fill('20000');
+  check('Volumen ajusta el recargo de Twilio',twilioCost!==await page.locator('.cost-total strong').innerText());
+  await page.locator('#whatsapp-provider').selectOption('360dialog');
+  check('360dialog conserva cuota fija',(await page.locator('.cost-row').nth(1).innerText()).includes('59'));
+  await page.locator('#crm-choice').selectOption('dms');
+  check('CRM DMS conserva precio pendiente',(await page.locator('.cost-row').first().innerText()).includes('Por definir'));
   await goto('/comparar');await page.getByRole('button',{name:'Primer vehículo',exact:true}).click();await page.getByRole('option',{name:'Alto X7',exact:true}).click();
   check('Comparador seleccionable',(await page.locator('.comparison-vehicles').innerText()).includes('Alto X7'));
   await page.setViewportSize({width:390,height:844});await goto('/');
